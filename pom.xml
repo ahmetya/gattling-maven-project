@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.github.nhuray</groupId>
+    <artifactId>gatling-maven-project</artifactId>
+    <version>1.3.4</version>
+
+    <properties>
+        <gatling.version>1.3.4</gatling.version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>excilys</id>
+            <name>Excilys Repository</name>
+            <url>http://repository.excilys.com/content/groups/public</url>
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>excilys</id>
+            <name>Excilys Repository</name>
+            <url>http://repository.excilys.com/content/groups/public</url>
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.excilys.ebi.gatling</groupId>
+                <artifactId>gatling-maven-plugin</artifactId>
+                <version>${gatling.version}</version>
+                <configuration>
+                    <configDir>src/main/resources</configDir>
+                    <dataFolder>src/main/resources/data</dataFolder>
+                    <resultsFolder>target/gatling</resultsFolder>
+                    <requestBodiesFolder>src/main/resources/request-bodies</requestBodiesFolder>
+                    <simulationsFolder>src/main/scala</simulationsFolder>
+                    <includes>
+                        <include>**/*.scala</include>
+                    </includes>
+                    <excludes>
+                        <exclude>advanced/*.scala</exclude>
+                    </excludes>
+                </configuration>
+                <dependencies>
+  		    <dependency>
+		        <groupId>com.excilys.ebi.gatling.highcharts</groupId>
+		        <artifactId>gatling-charts-highcharts</artifactId>
+                        <version>${gatling.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
